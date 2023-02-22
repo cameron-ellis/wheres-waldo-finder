@@ -21,3 +21,8 @@ wilma_dir = image_dir + '/wilma.png'
 #background image
 background_im = Image.open(background_dir)
 background_im
+
+#image of waldo
+waldo_im = Image.open(waldo_dir)
+waldo_im = waldo_im.resize((60, 100))
+waldo_im
