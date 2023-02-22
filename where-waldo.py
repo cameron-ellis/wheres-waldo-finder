@@ -10,3 +10,10 @@ from tensorflow.python.keras.utils.vis_utils import plot_model
 
 #import time
 import time
+#get the images directory
+image_dir = os.getcwd()
+
+#get the background and waldo image directory
+background_dir = image_dir + '/background.png'
+waldo_dir = image_dir + '/waldo.png'
+wilma_dir = image_dir + '/wilma.png'
