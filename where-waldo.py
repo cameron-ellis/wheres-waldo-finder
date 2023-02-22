@@ -17,3 +17,7 @@ image_dir = os.getcwd()
 background_dir = image_dir + '/background.png'
 waldo_dir = image_dir + '/waldo.png'
 wilma_dir = image_dir + '/wilma.png'
+
+#background image
+background_im = Image.open(background_dir)
+background_im
