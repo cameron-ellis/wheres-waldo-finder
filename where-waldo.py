@@ -104,3 +104,28 @@ plt.yticks([])
 plt.xlabel('Predicted: ' + cat, color='green')
 plt.ylabel('True: ' + cat, color='green')
 plt.show()
+
+
+#data generator function
+
+def generate_data(batch_size=16):
+
+  while True:
+     
+     #create empty arrays for the generated data
+     x_batch = np.zeros((batch_size, 350, 500, 3))
+     y_batch = np.zeros((batch_size, 1))
+     boundary_box = np.zeros((batch_size, 2))
+
+     for i in range(batch_size):
+
+       #generating an example impage
+       sample_im, pos, person, _ = generate_sample_image()
+
+       #put the images to the arrays
+       x_batch[i] = sampel_im/255 #normalize
+       y_batch[i] = person
+       boundary_box[i, 0] = pos[0]
+       boudnary_box[i, 1] = pos[1]
+
+       yield {'image': x_batch} , {'class': y_batch, 'box': boundary_box}
