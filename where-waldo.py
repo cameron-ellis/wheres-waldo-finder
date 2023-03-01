@@ -76,3 +76,31 @@ plt.imshow(sample_im)
 plt.xticks([])
 plt.yticks([])
 plt.show()
+
+#create the bounding boxes
+
+def plot_bounding_box(image, gt_coords, pred_coords = None):
+
+  #convert the image to an array:
+  image = Image.fromarray(image)
+  draw = ImageDraw.Draw(image)
+  draw.rectangle((gt_coords[0], gt_coords[1], gt_coords[0]+60, gt_coords[1]+100), outline = 'green', width = 5)
+
+  if pred_coords:
+    draw.rectangle((pred_coords[0], pred_coords[1], pred_coords[0]+60, pred_coords[1]+100), outline = 'red', width = 5)
+  
+  return image
+
+#generate example image
+sample_im, pos, _, cat = generate_sample_image()
+
+#generate image with bounding box
+im= plot_bounding_box(sample_im, pos, (pos[0]+10, pos[1]-20))
+
+plt.figure(figsize = (8, 8))
+plt.imshow(im)
+plt.xticks([])
+plt.yticks([])
+plt.xlabel('Predicted: ' + cat, color='green')
+plt.ylabel('True: ' + cat, color='green')
+plt.show()
